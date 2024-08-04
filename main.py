@@ -12,9 +12,16 @@ with open(file) as f:
                     characters[c] = 0
                 characters[c] = characters[c] + 1
 
+    lst = sorted(
+        ((x, characters[x]) for x in characters), key=lambda x: x[1], reverse=True
+    )
+
     print(f"--- Bookbot Report of {file} ---")
     print(f"{len(words)} total words were found in the file")
     print()
+
+    for tp in lst:
+        print(f'The "{tp[0]}" character was found {tp[1]} times')
 
     print()
     print("--- End Report ---")
